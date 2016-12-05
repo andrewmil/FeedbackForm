@@ -1,0 +1,27 @@
+<html>
+
+  <head>
+    <title>Feedback Test</title>
+  </head>
+
+  <body>
+    <form action="/database_Send" method="post" name="satisfaction">
+<!--
+      <input type="radio" name="group1" id="option1" value="1"> 1 <br>
+      <input type="radio" name="group1" id="option2" value="2"> 2 <br>
+      <input type="radio" name="group1" id="option3" value="3"> 3 <br>
+-->
+      {{ form.hidden_tag() }}
+      <p>
+        Satisfaction:
+        {{form.satisfaction()}}
+      </p>
+      <p>
+        Feedback:
+        {{form.feedback()}}
+      </p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+
+  </body>
+</html>
