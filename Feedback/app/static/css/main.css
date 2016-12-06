@@ -119,6 +119,13 @@ a.submitButton {
     text-decoration: none;
     background-color: #4CAF50;
 }
+input.submitButton {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    padding: 13px 48px;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #4CAF50;
 button.submitButton {
     -webkit-appearance: button;
     -moz-appearance: button;

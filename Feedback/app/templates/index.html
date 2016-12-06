@@ -5,16 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Feedback</title>
-    <link rel="stylesheet" href="static/main.css">
-    <link rel="stylesheet" href="static/responsive.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/responsive.css') }}">
     <link rel="canonical" href="http://onsdigital.github.io/eq-prototypes/ukis/v2/index/">
     <link rel="alternate" type="application/rss+xml" title="eQ Prototypes" href="http://onsdigital.github.io/eq-prototypes/feed.xml">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:300,400,600,700,900'>
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'>
-	<script src="scripts/data_transfer.js"></script>
+    <script type="text/python" src="{{ url_for('static',filename='py/dbConnect.py') }}"></script>
   </head>
 
-  <body>
+  <body onload="submit()">
     <div class="container">
       <div class="panel">
         <div class="panel__header survey-header u-cf">
@@ -42,75 +42,32 @@
       <div class="grid ">
         <div class="grid__col col-8@s">
           <div role="main" class="panel__body" id="main">
-            <form class="form qa-questionnaire-form" role="form" novalidate="">
-              <div class="hidden-form"></div>
-              <div class="group" id="14ba4707-321d-441d-8d21-b8367366e766">
-                <div class="block" id="cd3b74d1-b687-4051-9634-a8f9ce10a27d">
-                  <div class="section" id="017880bc-752d-4a6b-83df-e130409ee660">
-					<br/>
-                    <div class="question">
-                      <h3 class="question__title neptune"><span class="question__title__number venus">1</span>Overall, how do you feel about the survey?</h3>
-                      <div class="response response--checkbox">
-                        <div class="field field--multi field--checkbox">
-						  <fieldset id="group1">
-                          <div class="field__item">
-							<input class="input input--radio" type="radio" name="group1" id="form-input-0" value="1" title="1">
-                            <label class="label label--inline" for="form-input-0"><span class="label__inner">Very Satisfied</span></label>
-                          </div>
 
-                          <div class="field__item">
-							<input class="input input--radio" type="radio" name="group1" id="form-input-1" value="2" title="2">
-                            <label class="label label--inline" for="form-input-1"><span class="label__inner">Satisfied</span></label>
-                          </div>
+              <form action="/database_Send" class="form qa-questionnaire-form" method="POST", name="feedback">
+                {{ form.hidden_tag() }}
+                <p>
+                  Satisfaction:
+                  {{form.satisfaction(class="radioButton")}}
+                </p>
+                <p>
+                  Feedback:
+                  {{form.feedback()}}
+                </p>
+                <p><input class="submitButton" type="submit" value="Submit"></p>
+		          </form>
 
-                          <div class="field__item">
-							<input class="input input--radio" type="radio" name="group1" id="form-input-2" value="3" title="3">
-                            <label class="label label--inline" for="form-input-2"><span class="label__inner">Neither</span></label>
-                          </div>
-
-                          <div class="field__item">
-							<input class="input input--radio" type="radio" name="group1" id="form-input-3" value="4" title="4">
-                            <label class="label label--inline" for="form-input-3"><span class="label__inner">Dissatisfied</span></label>
-                          </div>
-
-						  <div class="field__item">
-							<input class="input input--radio" type="radio" name="group1" id="form-input-4" value="5" title="5">
-                            <label class="label label--inline" for="form-input-4"><span class="label__inner">Very Dissastified</span></label>
-                          </div>
-
-						  </fieldset>
-                        </div>
-                      </div>
-					</div>
-          <div class="question question--textarea" id="fef6edc2-d98c-4d4d-9a7c-997ce10c361f">
-            <legend class="question__legend">
-              <h3 class="question__title neptune"><span class="question__title__number venus">2</span>How could this survey be improved?</h3>
-            </legend>
-            <div class="question__responses">
-              <div class="response response--textarea" id="215015b1-f87c-4740-9fd4-f01f707ef558">
-                <div class="field">
-                  <!--<label class="label mars" for="215015b1-f87c-4740-9fd4-f01f707ef558" id="label-215015b1-f87c-4740-9fd4-f01f707ef558">Comments</label>-->
-                  <textarea aria-describedby="215015b1-f87c-4740-9fd4-f01f707ef558-helper" id="215015b1-f87c-4740-9fd4-f01f707ef558" name="215015b1-f87c-4740-9fd4-f01f707ef558" class="input input--textarea js-charlimit-input" data-maxlength="2000" rows="8" cols="60"></textarea>
-                </div>
-              </div>
             </div>
-          </div>
-
-			  <button class="submitButton" onclick="sendData()">Save and continue</button>
-
-		    </form>
           </div>
         </div>
       </div>
 
-    </div>
+	  </br></br>
+    </br></br>
+    </br></br>
+    </br></br>
+    </br></br>
+    </br></br>
 
-	</br></br>
-    </br></br>
-    </br></br>
-    </br></br>
-    </br></br>
-    </br></br>
   </body>
 
 </html>
