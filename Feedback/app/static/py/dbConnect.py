@@ -10,7 +10,6 @@ def dbConnect(conn_string):
 
 def sendData(conn, satisfaction, date, feedback):
     ##### Sends data to database #####
-    print ("sending data")
     cur = conn.cursor()
     cur.execute("INSERT INTO feedback (satisfaction, timeEntered, comment, surveyID) VALUES ('%s', '%s', '%s', 1);" % (satisfaction, date, feedback))
     conn.commit()
