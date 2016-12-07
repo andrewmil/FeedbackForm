@@ -1,5 +1,6 @@
 import psycopg2
 import sys
+from ../Tests/gemTest import *
 
 def dbConnect(conn_string):
     ##### Connects to database #####
@@ -15,3 +16,6 @@ def sendData(conn, satisfaction, date, feedback):
     conn.commit()
     cur.close()
     print ("data sent")
+    ####Test if data entered correctly####
+    dataFromDB()
+    correctData(satisfaction, date, feedback)
