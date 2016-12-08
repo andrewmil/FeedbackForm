@@ -37,7 +37,7 @@ def dataFromDB():
 
 
 
-def correctData(id, satisfaction, timeEntered, comment):
+def correctData(satisfaction, timeEntered, comment):
 
     if dbSatisfaction is satisfaction:
         if dbTimeEntered == timeEntered:

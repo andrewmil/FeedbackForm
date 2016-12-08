@@ -5,6 +5,7 @@ from random import randint
 from Tests.unitTest1 import connectTest
 from app.static.py.validation import feedbackValidation, satisfactionValidation
 from app.static.py.dbConnect import dbConnect, sendData
+from dbconfig import conn_string
 import psycopg2
 
 @app.route('/')
@@ -21,7 +22,6 @@ def database_Send():
     from datetime import datetime
 
     form = Feedback()
-    conn_string = "host='172.28.78.195' port='5432' dbname='feedback2' user='andrew' password='password'"
     conn = dbConnect(conn_string)
 
     ## retrieves data from form ##
