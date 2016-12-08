@@ -14,11 +14,15 @@ def create_task():
 		record = {
 			'_id': request.json['_id'],
 			'_timestamp': request.json['_timestamp'],
-			'very dissatisfied': request.json['very dissatisfied'],
-			'dissatisfied': request.json['dissatisfied'],
-			'neither': request.json['neither'],
-			'satisfied': request.json['satisfied'],
-			'very satisfied': request.json['very satisfied']
+			'service': request.json['service'],
+			'dataType': request.json['dataType'],
+			'period': request.json['period'],
+			'rating_1': request.json['rating_1'],
+			'rating_2': request.json['rating_2'],
+			'rating_3': request.json['rating_3'],
+			'rating_4': request.json['rating_4'],
+			'rating_5': request.json['rating_5'],
+			'total': request.json['total']
 		}
 		records.append(record)
 		return jsonify({'satus': 'ok'}), 200
