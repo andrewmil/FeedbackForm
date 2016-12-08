@@ -5,4 +5,4 @@ To install required python packages.
 
 To run the web application.
 
-1. In command line: python app/run.py
+1. In command line: python Feedback/run.py
