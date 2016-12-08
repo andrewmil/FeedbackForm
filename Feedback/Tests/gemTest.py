@@ -1,12 +1,11 @@
 from datetime import datetime
 import psycopg2
+from dbconfig import conn_string
 
 #dbId = 1
 dbSatisfaction = ""
 dbTimeEntered = "2016-01-24"
 dbComment = "unnassigned"
-
-
 
 def dataFromDB():
     global dbId
@@ -14,13 +13,12 @@ def dataFromDB():
     global dbTimeEntered
     global dbComment
 
-    conn = psycopg2.connect("host='172.28.78.195' port='5432' dbname='feedback2' user='andrew' password='password'")
+    conn = psycopg2.connect(conn_string)
     cursor = conn.cursor();
 
     conn.commit()
 
     try:
-
         cursor.execute("SELECT * FROM feedback ORDER BY timeEntered DESC LIMIT 1")
         results = cursor.fetchall()
         for row in results:
@@ -32,10 +30,6 @@ def dataFromDB():
         print (dbSatisfaction, dbTimeEntered, dbComment)
     except:
         print ("Error unable to fetch data")
-
-
-
-
 
 def correctData(satisfaction, timeEntered, comment):
 
