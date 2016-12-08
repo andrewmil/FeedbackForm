@@ -1,6 +1,6 @@
 import psycopg2
 import sys
-from ../Tests/gemTest import *
+from Tests.gemTest import *
 
 def dbConnect(conn_string):
     ##### Connects to database #####
