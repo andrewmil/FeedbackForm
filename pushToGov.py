@@ -3,7 +3,7 @@ import json
 from datetime import datetime, timedelta
 import requests
 from time import gmtime, strftime
-import uuid
+import sys
 
 
 class govDataEx():
@@ -15,7 +15,7 @@ class govDataEx():
 		# user= input("Input username:")
 		#password= input("Input password:")
 
-		self.dbSQL = psycopg2.connect(database="feedback2", user="andrew", password='password', host="172.28.100.126", port="5432")
+		self.dbSQL = psycopg2.connect(database="feedback2", user="andrew", password='password', host="172.28.109.182", port="5432")
 		self.cursor =  self.dbSQL.cursor()
 
 	def send(self, sDate, eDate, url):
@@ -40,8 +40,15 @@ class govDataEx():
 		data = json.dumps({'_id':id,'_timestamp':timestamp,'service':"gov-wifi", 'dataType':"user-satisfaction",'period':period,'rating_1':satisfactionList[0][1], 'rating_2':satisfactionList[1][1], 'rating_3':satisfactionList[2][1], 'rating_4':satisfactionList[3][1], 'rating_5':satisfactionList[4][1], 'total':total})
 		headers = {'Content-Type':'application/json','Authorization':'Bearer abcdrandomtokenthings'}
 		r = requests.post(url, data= data, headers=headers)
-		print(r.status_code)
-		print(r.content)
+		if(r.status_code != 200):
+			print("POST status not 'OK'")
+			sys.exit(-1)
+		else:
+			print(r.status_code)
+			print(r.content)
+
+
+
 
 exchange = govDataEx()
 
@@ -56,7 +63,7 @@ sDate = eDate - timedelta(days=7)
 
 #print("start: " + str(sDate)[:10] + "  end: " + str(eDate)[:10])
 #exchange.send(str(sDate)[:10],str(eDate)[:10],'http://localhost:5000/data/ONS/satisfaction')
-exchange.send(str(sDate)[:10],str(eDate)[:10],'http://requestb.in/1naaaau1')
+exchange.send(str(sDate)[:10],str(eDate)[:10],'http://requestb.in/sobcwtso')
 
 
 
